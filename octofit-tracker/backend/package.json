@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "description": "OctoFit Tracker backend API",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc -p tsconfig.json",
-    "start": "node dist/index.js",
+    "start": "node dist/server.js",
     "seed": "ts-node-dev --exit-child --transpile-only src/scripts/seed.ts"
   },
   "dependencies": {
