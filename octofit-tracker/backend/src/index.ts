@@ -30,7 +30,7 @@ app.get('/api/health', (_req, res) => {
   });
 });
 
-app.get('/api/users/', async (_req, res) => {
+app.get('/api/users', async (_req, res) => {
   const users = await User.find().sort({ createdAt: -1 }).lean();
 
   res.status(200).json({
@@ -56,7 +56,7 @@ app.get('/api/teams/', async (_req, res) => {
   });
 });
 
-app.get('/api/activities/', async (_req, res) => {
+app.get('/api/activities', async (_req, res) => {
   const activities = await Activity.find()
     .populate('user', 'username fullName')
     .sort({ performedAt: -1 })
