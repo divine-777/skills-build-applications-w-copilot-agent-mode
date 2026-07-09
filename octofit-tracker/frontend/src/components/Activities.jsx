@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function normalizeItems(payload) {
   if (Array.isArray(payload)) return payload
@@ -13,14 +13,9 @@ function Activities() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
-  const endpoint = useMemo(() => {
-    const codespaceName = import.meta.env.VITE_CODESPACE_NAME
-    const apiBaseUrl = codespaceName
-      ? `https://${codespaceName}-8000.app.github.dev/api`
-      : 'http://localhost:8000/api'
-
-    return `${apiBaseUrl}/activities/`
-  }, [])
+  const codespacesEndpoint = `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/activities/`
+  const localhostEndpoint = 'http://localhost:8000/api/activities/'
+  const endpoint = import.meta.env.VITE_CODESPACE_NAME ? codespacesEndpoint : localhostEndpoint
 
   useEffect(() => {
     const controller = new AbortController()
